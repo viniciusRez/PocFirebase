@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <defaults>
   <entry>
-    <key>Localizacao</key>
+    <key>localizacao</key>
     <value>Merry Christmas</value>
   </entry>
   <entry>
-    <key>Conteudo</key>
+    <key>conteudo</key>
     <value>Seja Bem vindo ao novo mundo</value>
   </entry>
   <entry>
-    <key>SHOW_BACKGROUND_IMAGE</key>
+    <key>changeimage</key>
     <value>false</value>
   </entry>
 </defaults>

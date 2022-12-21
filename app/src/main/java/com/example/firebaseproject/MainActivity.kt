@@ -1,21 +1,24 @@
 package com.example.firebaseproject
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig.TAG
-import com.google.firebase.remoteconfig.RemoteConfigConstants
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 
+
 class MainActivity : AppCompatActivity() {
+    object Keys{
+        const val conteudoKey:String = "conteudo"
+        const val backgroundImage:String = "changeimage"
+        const val localizacao:String = "localizacao"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -58,10 +61,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val conteudo: String = Firebase.remoteConfig.getString("Conteudo")
-        txtHi.text = conteudo
+        val content: String = Firebase.remoteConfig.getString(Keys.conteudoKey)
+        txtHi.text = content
 
-        val backGround: Boolean = Firebase.remoteConfig.getBoolean( "SHOW_BACKGROUND_IMAGE")
+        val backGround: Boolean = Firebase.remoteConfig.getBoolean( Keys.backgroundImage)
         if(backGround){
             imgPrincipal.setImageResource(R.mipmap.ic_banner_natal)
 
@@ -69,8 +72,14 @@ class MainActivity : AppCompatActivity() {
             imgPrincipal.setImageResource(R.mipmap.ic_banner)
         }
 
-        val location: String = Firebase.remoteConfig.getString("Localizacao")
+        val location: String = Firebase.remoteConfig.getString(Keys.localizacao)
         message.text = location
+
+        val btnNextPage:Button = findViewById(R.id.btnNextPage)
+        btnNextPage.setOnClickListener{
+            val intent = Intent(this, POO_Tester::class.java)
+            startActivity(intent)
+        }
 
     }
 
